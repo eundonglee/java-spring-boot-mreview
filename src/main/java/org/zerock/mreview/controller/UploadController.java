@@ -1,6 +1,7 @@
 package org.zerock.mreview.controller;
 
 import lombok.extern.log4j.Log4j2;
+import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -58,6 +59,13 @@ public class UploadController {
 
             try {
                 uploadFile.transferTo(savePath);
+
+                String thumbnailSaveName = uploadPath + File.separator + folderPath + File.separator + "s_" + uuid + "_" + fileName;
+
+                File thumbnailFile = new File(thumbnailSaveName);
+
+                Thumbnailator.createThumbnail(savePath.toFile(), thumbnailFile, 100, 100);
+
                 resultDTOList.add(new UploadResultDTO(fileName, uuid, folderPath));
             } catch (IOException e) {
                 e.printStackTrace();
