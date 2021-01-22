@@ -12,11 +12,11 @@ public class UploadResultDTO {
 
     private String fileName;
     private String uuid;
-    private String forderPath;
+    private String folderPath;
 
     public String getImageURL() {
         try {
-            return URLEncoder.encode(forderPath + "/" + uuid + "_" + fileName, "UTF-8");
+            return URLEncoder.encode(folderPath + "/" + uuid + "_" + fileName, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -25,7 +25,7 @@ public class UploadResultDTO {
 
     public String getThumbnailURL() {
         try {
-            return URLEncoder.encode(forderPath + "/" + "s_" + uuid + "_" + fileName, "UTF-8");
+            return URLEncoder.encode(folderPath + "/" + "s_" + uuid + "_" + fileName, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
