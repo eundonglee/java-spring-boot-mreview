@@ -153,6 +153,26 @@
                     });
                 });
             });
+
+            $(".uploadResult").on("click", "li button", function(e) {
+
+                console.log("delete file");
+
+                var targetFile = $(this).data("file");
+
+                var targetLi = $(this).closest("li");
+
+                $.ajax({
+                    url: '/removeFile',
+                    data: {fileName: targetFile},
+                    dataType: 'text',
+                    type: 'POST',
+                    success: function(result){
+                        alert(result);
+                        targetLi.remove();
+                    }
+                });
+            });
         </script>
 
     </th:block>
