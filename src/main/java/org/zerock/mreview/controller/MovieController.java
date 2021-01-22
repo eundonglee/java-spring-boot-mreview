@@ -31,6 +31,6 @@ public class MovieController {
 
         redirectAttributes.addFlashAttribute("msg", mno);
 
-        return "redirect:/moive/list";
+        return "redirect:/movie/list";
     }
 }

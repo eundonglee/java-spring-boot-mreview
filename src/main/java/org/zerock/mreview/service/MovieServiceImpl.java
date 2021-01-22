@@ -25,10 +25,14 @@ public class MovieServiceImpl implements MovieService{
     @Transactional
     @Override
     public Long register(MovieDTO movieDTO) {
+        log.info("movieDTO: " + movieDTO);
 
         Map<String, Object> entityMap = dtoToEntity(movieDTO);
-        Movie movie = (Movie) entityMap.get("Movie");
+        Movie movie = (Movie) entityMap.get("movie");
         List<MovieImage> movieImageList = (List<MovieImage>) entityMap.get("imgList");
+
+        log.info("entityMap: " + entityMap.toString());
+        log.info("movie: " + entityMap.get("movie"));
 
         movieRepository.save(movie);
 
